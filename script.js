@@ -61,3 +61,25 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const packages = document.querySelectorAll(".package");
+
+    packages.forEach(pkg => {
+        pkg.addEventListener("click", function () {
+            packages.forEach(p => p.classList.remove("selected"));
+            this.classList.add("selected");
+        });
+    });
+});
+
+function confirmOrder() {
+    const playerId = document.getElementById("player-id").value;
+    const selectedPackage = document.querySelector(".package.selected");
+
+    if (!playerId || !selectedPackage) {
+        alert("Harap isi ID Pemain dan pilih paket terlebih dahulu!");
+        return;
+    }
+
+    alert(`Pesanan berhasil untuk ID: ${playerId}, Paket: ${selectedPackage.textContent}`);
+}
